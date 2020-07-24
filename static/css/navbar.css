@@ -13,7 +13,7 @@
 	margin-top: 0px;
 	font-weight: 400;
 	display: block;
-	color: #3c4146;
+	color: #000;
 }
 
 .top-navbar {
@@ -55,7 +55,7 @@
 	text-align: left;
 	padding: 0px;
 	font-weight: 400;
-	color: #3c4146;
+	color: #000;
 	background: transparent;
 	text-transform: uppercase;
 }
@@ -76,7 +76,7 @@
 	height: auto;
 	background: #0077b5;
 	padding: 3px 3px 3px 3px;
-	color: #3c4146;
+	color: #000;
 	font-weight: normal;
 }
 
@@ -120,16 +120,17 @@
 
 
 nav ul a {
- font-size: 10px;
- letter-spacing: 0.4px;
- color: #3c4146;
-text-transform: uppercase;
+ font-size: 11px;
+ letter-spacing: 1px;
+ color: #000000;
+ text-transform: uppercase;
+ padding: 0px 0px 0px 20px;
+
 }
 
 .nav-link {
 	height: 100% !important;
-	margin: 7px 7px;
-	padding: 0px;
+	margin: 10px 0px;
 }
 
 .nav i,
@@ -147,7 +148,7 @@ text-transform: uppercase;
 	margin: 0px;
 	line-height: 1;
 	padding: 0px;
-	color: #3c4146;
+	color: #000;
 	float: right !important;
 }
 
@@ -200,87 +201,6 @@ nav ul a:hover {
 	color: #e5ebef;
 }
 
-
-/*------------------------------------------------------------------------------
-    DROPDOWN MENU
-------------------------------------------------------------------------------*/
-
-
-.dropdown-content li > span {
-    padding: 12px 0px;
-}
-
-.dropdown-content {
-	top: 30px !important;
-	width: max-content !important;
-}
-
-.dropdown-content li {
-	margin-bottom: 0px;
-	margin-left: 0px !important;
-}
-
-.dropdown-content li>a {
-	font-size: 12px 6px;
-	text-decoration: none;
-}
-
-.dropdown-content li>fa {
-	font-size: 16px;
-}
-
-
-.dropdown-content li>a {
-	color: #3c4146;
-	background-color: #fff;
-}
-
-.dropdown-content li>fa {
-	color: #1a2026;
-}
-
-.dropdown-content li:hover {
-  background: transparent;
-}
-
-
-/*------------------------------------------------------------------------------
-    MOBILE MENU
-------------------------------------------------------------------------------*/
-
-
-.sidenav-trigger {
-	height: 30px !important;
-}
-
-.sidenav-trigger i {
-	font-weight: 600;
-}
-
-#trigger {
-	font-size: 24px;
-}
-
-.sidenav li>a>i {
-	margin: 0px !important;
-}
-
-
-.sidenav li:hover {
-	background: transparent;
-}
-
-.sidenav {
-	background: #fff;
-}
-
-.sidenav li>a {
-	color: #3c4146
-}
-
-.sidenav li>a>i {
-	color: #3c4146;
-}
 
 
 /*------------------------------------------------------------------------------

@@ -1,23 +1,21 @@
 <template>
 <nav class="navbar navbar-default top-navbar" role="navigation">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">
-        <img src="" alt="Logo"
+      <a class="navbar-brand" href="index.html">
+        <img src="static/img/logo-blue-small.png" alt="Logo"
              class="img-logo"/>
       </a>
-      <a class="navbar-brand" href="/">
-        Authentication
-      </a>
     </div>
-    <ul class="nav navbar-top-links navbar-right">
+    <div class="col s10 m4 l5 plain-element center-align">
 
-      <li><span><a class="nav-link" href=""><i class="fas fa-chart-bar"></i>Reports</a></span></li>
-      <li><span><a class="nav-link" href=""><i class="fas fa-database"></i>DB Manager</a></span></li>
-      <li><span><a class='dropdown-trigger nav-link' href='#' data-target='dropdown-user' id="user_dropdown"><i
-              class="fas fa-caret-down"></i>
-                Login/Register
-            </a></span></li>
-    </ul>
+    </div>
+    <div class="col s4 m5 l5 plain-element">
+      <ul class="nav navbar-top-links navbar-right">
+        <li><a class="nav-link" href="">Log In</a></li>
+        <li><a class="nav-link" href="">Sign Up</a></li>
+        <li><a class="nav-link" href="">Logout</a></li>
+      </ul>
+    </div>
   </nav>
 </template>
 
