@@ -1,0 +1,380 @@
+/*------------------------------------------------------------------------------
+    DASHBOARD CARDS
+------------------------------------------------------------------------------*/
+
+.col-content {
+    border-left: 1px solid #e5e5e5;
+    min-height: 780px !important;
+    margin-top: 20px !important;
+    border-right: 1px solid #e5e5e5;
+
+}
+.col-content-right  {
+    border-left: none;
+    min-height: 780px !important;
+    margin-top: 20px !important;
+    border-right: none;
+
+}
+
+
+.dashboard-cards {
+    border: none;
+    text-align: center;
+    box-shadow: none;
+    width: 100%;
+    margin: auto;
+    min-height: 700px;
+    padding: 0px 0px 0px 0px;
+}
+
+
+.row-break {
+    height: 20px;
+    margin: 0px;
+}
+
+.row-cards {
+    width: 100%;
+  margin-bottom: 60px;
+  overflow-x: hidden;
+}
+
+
+/*------------------------------------------------------------------------------
+    SEARCH FUNCTIONS
+------------------------------------------------------------------------------*/
+
+.row-table-functions {
+    height: 80px;
+    padding: 10px;
+    margin: 0px 0px;
+
+}
+
+.col-results {
+    padding: 0x !important;
+
+}
+
+.col-results p {
+    float: left;
+}
+
+.col-load-more {
+    position: relative;
+}
+
+.filter-wrapper {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.filter-wrapper label {
+    margin: 0px;
+    color: #55595d;
+}
+
+#keywordFilter {
+  font-size: 14px;
+  height: 36px;
+}
+
+#tableSearch input{
+  text-align: center !important;
+
+}
+
+.place-holder-center::placeholder {
+      text-align: center;
+      color: #999;
+  }
+
+input[type="text"]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #90c73e;
+    box-shadow: 0 1px 0 0 #90c73e;
+
+}
+
+/*----------------------------------------------
+    MENU CARD
+------------------------------------------------*/
+
+.menu-card {
+    box-shadow: none;
+    text-align: left;
+    width: 105%;
+    float: none;
+    margin: 6px 0px;
+    margin-left: -20px;
+    padding: 6px 8px 6px 20px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    background: transparent;
+    transition: background-color .3s;
+    max-width: 220px;
+
+}
+
+
+.menu-card:hover,
+.menu-card:focus,
+.menu-card:active {
+    background-color: #dadce0;
+    color: #6e6e6f;
+}
+
+
+/*----------------------------------------------
+    ANALYTICS DASHBOARD
+------------------------------------------------*/
+
+
+.insights-card {
+    box-shadow: none;
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    float: none;
+    border-radius: 5px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px 0 #cccccc,0 1px 1px 0 #dbdbdb,0 2px 1px -1px #e0e0e0;
+}
+
+.insights-small {
+    height: 60px;
+    text-align: left;
+    width: 92%;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 40px;
+    float: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 0px 10px;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px 0 #cccccc,0 1px 1px 0 #dbdbdb,0 2px 1px -1px #e0e0e0;
+    position: relative;
+    color: #757575;
+
+}
+
+.insights-small table > td{
+    padding: 15px 5px;
+}
+
+
+.insights-small b {
+    position: relative;
+    top: -2px;
+    font-size: 20px;
+    color: #1e73ae;
+
+}
+
+
+.insights-card .card-header {
+   display: flex;
+   padding: 6px 8px 6px 10px;
+   margin-bottom: 0px;
+   width: 100%;
+}
+
+.insights-card .card-header p {
+    margin-left: 0px;
+    margin-top: 6px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #757575;
+    line-height: 1.2;
+    width:75%;
+}
+
+.insights-card-left {
+   width: 96%;
+   margin-left: 0;
+   margin-right: 4%;
+}
+
+.insights-card-right {
+   width: 96%;
+   margin-left: 4%;
+   margin-right: 0%;
+}
+
+
+.insights-card-narrow-right {
+   width: 91%;
+   margin-left: 8%;
+   margin-right: 0;
+   box-shadow: 0 1px 3px 0 #cccccc,0 1px 1px 0 #dbdbdb,0 2px 1px -1px #e0e0e0;
+}
+
+.insights-card-mid {
+  height: 360px;
+}
+
+
+/*------------------------------------------------------------------------------
+    TABLE
+------------------------------------------------------------------------------*/
+
+.table-companies tr {
+ border-bottom: 0px solid transparent;
+ font-size: 11px;
+ color: #757575;
+}
+
+.table-companies td {
+  padding-left: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+
+.table-companies tr:nth-child(odd) {
+  background-color: #fcfcfc;
+}
+
+.table-companies th {
+  padding-left: 10px;
+  background-color: #ffffff;
+}
+
+.field-name {
+  width: 80%;
+}
+
+.field-name b{
+  font-weight: 400;
+  font-size: 12px;
+}
+
+
+.field-value {
+  font-weight: 600;
+  font-size: 12px;
+
+}
+
+
+
+/*----------------------------------------------
+    MEDIA QUERIES
+------------------------------------------------*/
+
+
+@media(max-width:1700px) {
+  .dashboard-cards {
+    width: 98%;
+  }
+
+  .searchbox-long {
+    width: 99%;
+    margin-left: 1%;
+  }
+
+
+}
+
+
+
+@media(max-width:1361px) {
+
+}
+
+@media(max-width:1200px) {
+
+
+}
+
+
+@media(max-width:1025px) {
+
+  .card-product .card-title {
+    font-size: 0.9em;
+  }
+
+
+  .resultCount {
+    font-size: 12px;
+   }
+
+   .btn-export {
+    margin-left: 6px;
+    padding: 2px;
+
+   }
+
+   .btn-export i {
+     top: -8px;
+   }
+
+
+}
+
+@media(max-width:800px) {
+
+  .btn-document {
+    font-size: 14px;
+  }
+
+  .searchbox-long {
+      width: 97%;
+  }
+
+
+  .btn-export {
+    margin: 12px 2px;
+  }
+
+  .insights-card-narrow-right {
+    width: 100%;
+    margin-left: 0%;
+    margin-right: 0;
+  }
+
+
+
+}
+
+
+@media(max-width:600px) {
+  .dashboard-cards {
+    width: 96%;
+  }
+
+
+  .searchbox-wrapper-long {
+      width: 97%;
+  }
+
+  .col-results {
+    display: none;
+  }
+
+  .btn-loading {
+    font-size: 10px;
+  }
+
+  .row-back {
+      margin-bottom: 20px;
+  }
+
+  .col-product-images {
+    display: none;
+  }
+
+  .card-description h3 {
+    font-size: 24px;
+  }
+
+}
+
