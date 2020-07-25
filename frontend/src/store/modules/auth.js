@@ -1,9 +1,11 @@
-import api from '../../api/imgur.js';
+import apiImgur from '../../api/imgur.js';
+import apiGithub from '../../api/github.js';
 import qs from 'qs'
 import router from '../../router.js'
 
 const state = {
-  token: window.localStorage.getItem('imgur_token')
+  token: window.localStorage.getItem('token'),
+  username: window.localStorage.getItem('username')
 };
 
 const getters = {
@@ -14,17 +16,33 @@ const getters = {
 
 const actions = {
   loginImgur: () => {
-    api.login();
+    apiImgur.loginImgur();
   },
-  finalizeLogin( { commit }, hash ) {
+  finalizeImgurLogin( { commit }, hash ) {
     const query = qs.parse(hash.replace('#', ''));
     commit('setToken', query.access_token);
-    window.localStorage.setItem('imgur_token', query.access_token);
+    commit('setUsername', query.account_username);
+    window.localStorage.setItem('token', query.access_token);
+    window.localStorage.setItem('username', query.account_username);
     router.push('/');
   },
+  loginGithub: () => {
+    apiGithub.loginGithub();
+  },
+  finalizeGithubLogin( { commit }, hash ) {
+    const query = qs.parse(hash.replace('#', ''));
+    commit('setToken', query.access_token);
+    commit('setUsername', query.account_username);
+    window.localStorage.setItem('token', query.access_token);
+    window.localStorage.setItem('username', query.account_username);
+    router.push('/');
+  },
+
   logout: ({ commit }) => {
     commit('setToken', null);
-    window.localStorage.removeItem('imgur_token');
+    commit('setUsername', null);
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('username');
   }
 };
 
@@ -32,6 +50,9 @@ const mutations = {
 // Update token
   setToken: (state, token) => {
     state.token = token;
+  },
+  setUsername: (state, username) => {
+    state.username = username;
   }
 };
 

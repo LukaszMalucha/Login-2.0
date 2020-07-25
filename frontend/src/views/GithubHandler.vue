@@ -8,12 +8,13 @@
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'AuthHandler',
+  name: 'GithubHandler',
   methods: {
-    ...mapActions(['finalizeImgurLogin']),
+    ...mapActions(['finalizeGithubLogin']),
   },
   created() {
-      this.finalizeImgurLogin(window.location.hash);
+//      this.finalizeGithubLogin(window.location.hash);
+
   },
 };
 </script>

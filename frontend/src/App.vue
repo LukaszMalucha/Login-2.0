@@ -13,10 +13,12 @@ export default {
     components: {
       NavBarComponent
     },
+
     methods: {
 
     },
     created() {
+
     }
 }
 </script>
