@@ -20,7 +20,7 @@ body {
 
 .form-signin {
 	text-align: center;
-	max-width: 40%;
+	max-width: 36%;
 	padding: 15px 0px 0px 0px;
 	margin: 0 auto;
 	background-color: white;
@@ -53,32 +53,70 @@ body {
 	background-color: #194272;
 }
 
-#icon-login {
-	margin: auto;
-	margin-bottom: 2rem;
-	font-size: 4rem;
-	background-color: white;
-	padding: 1% 3% 3% 3%;
-	color: #205592;
-}
+/*----------------------------------------------
+    FORM BOX
+------------------------------------------------*/
 
 .form-box {
 	margin: 0px;
-	margin-top: -50px;
 	padding: 0px;
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 	border: none;
 }
 
-.row-login {
-	padding-left: 5%;
-	padding-right: 5%;
+
+.form-box a {
+  color: #9e9e9e;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+
+.form-box a:hover,
+.form-box a:active,
+.form-box a:focus {
+  color: #205592;
+}
+
+
+.form-box h3 {
+  margin: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+
+}
+
+
+.row-oauth i{
+   margin: 6px 12px;
+   font-size: 18px;
+    color: #9e9e9e;
+}
+
+.row-oauth i:hover,
+.row-oauth i:active,
+.row-oauth i:focus {
+  color: #205592;
+}
+
+
+.row-links {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #9e9e9e;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.row-form {
+    width: 60%;
+    margin: auto;
 }
 
 .input-field {
-	margin-top: 20px;
-	margin-bottom: 30px;
+	margin-top: 16px;
+	margin-bottom: 16px;
 }
 
 .field-description {
@@ -96,6 +134,11 @@ body {
 	color: #3c4146;
 }
 
+.input-field>label {
+  font-size: 12px;
+	letter-spacing: 1px;
+}
+
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
 input[type="text"]:not(.browser-default):focus:not([readonly]) {
@@ -106,17 +149,18 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
 input[type="email"]:not(.browser-default),
 input[type="password"]:not(.browser-default),
 input[type="text"]:not(.browser-default) {
-	font-size: 14px;
-	height: 2.5rem;
+
 }
 
-.input-field>label {
-	display: none;
+.form-box .active {
+  color: #205592 !important;
+  background: transparent !important;
 }
 
 .orange-text {
 	font-size: 12px;
 }
+
 
 blockquote {
 	font-size: 12px;
@@ -125,7 +169,6 @@ blockquote {
 	position: relative;
 	top: -50px;
 }
-
 
 /*----------------------------------------------
     USER PROFILE
