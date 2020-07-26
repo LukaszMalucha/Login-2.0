@@ -1,11 +1,10 @@
 import apiImgur from '../../api/imgur.js';
-import apiGithub from '../../api/github.js';
 import qs from 'qs'
 import router from '../../router.js'
 
 const state = {
   token: window.localStorage.getItem('token'),
-  username: window.localStorage.getItem('username')
+  username: window.localStorage.getItem('username'),
 };
 
 const getters = {
@@ -15,21 +14,12 @@ const getters = {
 
 
 const actions = {
+// IMGUR
+
   loginImgur: () => {
     apiImgur.loginImgur();
   },
   finalizeImgurLogin( { commit }, hash ) {
-    const query = qs.parse(hash.replace('#', ''));
-    commit('setToken', query.access_token);
-    commit('setUsername', query.account_username);
-    window.localStorage.setItem('token', query.access_token);
-    window.localStorage.setItem('username', query.account_username);
-    router.push('/');
-  },
-  loginGithub: () => {
-    apiGithub.loginGithub();
-  },
-  finalizeGithubLogin( { commit }, hash ) {
     const query = qs.parse(hash.replace('#', ''));
     commit('setToken', query.access_token);
     commit('setUsername', query.account_username);
@@ -53,7 +43,10 @@ const mutations = {
   },
   setUsername: (state, username) => {
     state.username = username;
-  }
+  },
+  setGithubCode: (state, code) => {
+    state.githubCode = code;
+  },
 };
 
 export default {

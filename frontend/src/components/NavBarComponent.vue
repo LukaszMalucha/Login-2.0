@@ -18,7 +18,6 @@
         <li><router-link :to="{ name: 'login'}" class="nav-link" href="">Log In</router-link></li>
         <li><router-link :to="{ name: 'signup'}" class="nav-link" href="">Sign Up</router-link></li>
         <li><a class="nav-link" @click="loginImgur">Imgur</a></li>
-        <li><a class="nav-link" @click="loginGithub">Github</a></li>
       </ul>
     </div>
   </nav>
@@ -36,7 +35,7 @@ export default {
       ...mapGetters(['isLoggedIn']),
   },
   methods: {
-    ...mapActions(['loginImgur', 'loginGithub', 'logout']),
+    ...mapActions(['loginImgur', 'logout' ]),
   }
 };
 </script>
