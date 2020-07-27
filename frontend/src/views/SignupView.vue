@@ -85,7 +85,6 @@ export default {
               }
               else if (data.key) {
                 window.localStorage.setItem("token", data.key);
-
                 this.$router.push({ name: 'home' })
               }
             }

@@ -11,12 +11,12 @@
   </div>
   <div class="col s4 m5 l5 plain-element">
     <ul   class="nav navbar-top-links navbar-right">
-      <li><a class="nav-link" @click="logout">Logout</a></li>
+      <li><router-link  :to="{ name: 'logout'}" class="nav-link">Logout</router-link></li>
        <li><a class="nav-link">{{ getUsername }}</a></li>
     </ul>
     <ul  class="nav navbar-top-links navbar-right">
-      <li><router-link :to="{ name: 'login'}" class="nav-link" href="">Log In</router-link></li>
-      <li><router-link :to="{ name: 'signup'}" class="nav-link" href="">Sign Up</router-link></li>
+      <li><router-link  :to="{ name: 'login'}" class="nav-link" href="">Log In</router-link></li>
+      <li><router-link  :to="{ name: 'signup'}" class="nav-link" href="">Sign Up</router-link></li>
     </ul>
   </div>
 </nav>
@@ -32,11 +32,7 @@ export default {
       },
   },
   methods: {
-    logout() {
-        window.localStorage.removeItem('token');
-        window.localStorage.removeItem('username');
-        this.$router.push({ name: 'home' })  # RELOAD!!!!
-      },
+
 
   },
   beforeRouteUpdate (to, from, next) {
