@@ -20,6 +20,7 @@ export default {
     data() {
       return {
         token: window.localStorage.getItem("token"),
+        currentUser: null,
 
       }
     },
@@ -33,15 +34,21 @@ export default {
                       'Authorization': `Token ${this.token}`
                     }
           })
-          .then(response =>{
-            window.console.log(response);
+          .then(data =>{
+            window.localStorage.setItem("username", data.data.username);
+            window.console.log(data.data.username);
           })
 
-      }
-
+      },
     },
     created() {
       this.setUserInfo()
+    },
+    beforeRouteUpdate (to, from, next) {
+      this.currentUser = window.localStorage.getItem("username")
+      next();
     }
+
+
 }
 </script>

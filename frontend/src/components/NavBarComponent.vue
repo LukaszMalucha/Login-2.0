@@ -10,21 +10,19 @@
 
   </div>
   <div class="col s4 m5 l5 plain-element">
-    <ul v-if="isLoggedIn"  class="nav navbar-top-links navbar-right">
+    <ul   class="nav navbar-top-links navbar-right">
       <li><a class="nav-link" @click="logout">Logout</a></li>
        <li><a class="nav-link">{{ getUsername }}</a></li>
     </ul>
-    <ul v-else class="nav navbar-top-links navbar-right">
+    <ul  class="nav navbar-top-links navbar-right">
       <li><router-link :to="{ name: 'login'}" class="nav-link" href="">Log In</router-link></li>
       <li><router-link :to="{ name: 'signup'}" class="nav-link" href="">Sign Up</router-link></li>
-      <li><a class="nav-link" @click="loginImgur">Imgur</a></li>
     </ul>
   </div>
 </nav>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: "NavBarComponent",
@@ -32,10 +30,18 @@ export default {
       getUsername() {
         return window.localStorage.getItem("username");
       },
-      ...mapGetters(['isLoggedIn']),
   },
   methods: {
-    ...mapActions(['loginImgur', 'logout' ]),
+    logout() {
+        window.localStorage.removeItem('token');
+        window.localStorage.removeItem('username');
+        this.$router.push({ name: 'home' })  # RELOAD!!!!
+      },
+
+  },
+  beforeRouteUpdate (to, from, next) {
+      this.getUsername();
+      next();
   }
 };
 </script>
