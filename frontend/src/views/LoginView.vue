@@ -46,6 +46,7 @@
 
 <script>
 import { apiService } from "@/common/api.service.js";
+import { mapActions } from 'vuex';
 
 export default {
   name: "LoginView",
@@ -57,6 +58,13 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['login', 'setUserInfo']),
+    loginUser(token) {
+      this.login(token)
+    },
+    setUsername(username) {
+      this.setUserInfo(username)
+    },
     logIn() {
       if (!this.email || !this.password ) {
         this.error = "Fields can't be empty."
@@ -84,11 +92,13 @@ export default {
                 setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
               }
               else if (data.key) {
-                window.localStorage.setItem("token", data.key);
-                this.$router.push({ name: 'home' })
+                this.loginUser(data.key);
+                this.setUserInfo("ADMIN");
+                this.$router.push({ name: 'home' });
               }
             }
         })
+
       }
     }
 

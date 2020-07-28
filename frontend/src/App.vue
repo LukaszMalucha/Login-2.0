@@ -10,6 +10,7 @@
 import NavBarComponent from "@/components/NavBarComponent.vue";
 import axios from 'axios';
 import { CSRF_TOKEN } from "@/common/csrf_token.js"
+import { mapActions } from 'vuex';
 
 export default {
     name: "App",
@@ -26,7 +27,8 @@ export default {
     },
 
     methods: {
-      async setUserInfo() {
+      ...mapActions(['login', 'setUserInfo']),
+      async getUserInfo() {
         axios.get("/auth/user/",
           { headers:{
                       'Content-Type': undefined,
@@ -35,20 +37,13 @@ export default {
                     }
           })
           .then(data =>{
-            window.localStorage.setItem("username", data.data.username);
-            window.console.log(data.data.username);
+            window.console.log(data)
           })
 
       },
     },
     created() {
-      this.setUserInfo()
+      this.getUserInfo()
     },
-    beforeRouteUpdate (to, from, next) {
-      this.currentUser = window.localStorage.getItem("username")
-      next();
-    }
-
-
 }
 </script>

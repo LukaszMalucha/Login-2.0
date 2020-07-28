@@ -12,33 +12,30 @@
   <div class="col s4 m5 l5 plain-element">
     <ul   class="nav navbar-top-links navbar-right">
       <li><router-link  :to="{ name: 'logout'}" class="nav-link">Logout</router-link></li>
-       <li><a class="nav-link">{{ getUsername }}</a></li>
+       <li><a class="nav-link">username: {{ getUsername }}</a></li>
     </ul>
     <ul  class="nav navbar-top-links navbar-right">
       <li><router-link  :to="{ name: 'login'}" class="nav-link" href="">Log In</router-link></li>
       <li><router-link  :to="{ name: 'signup'}" class="nav-link" href="">Sign Up</router-link></li>
+      <li><a  class="nav-link" href="">Is logged: {{ isLoggedIn }}</a></li>
+      <li><a href="#" class="nav-link">Vuex Login</a></li>
     </ul>
   </div>
 </nav>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   name: "NavBarComponent",
   computed: {
-      getUsername() {
-        return window.localStorage.getItem("username");
-      },
+      ...mapGetters(['isLoggedIn','getUsername']),
   },
   methods: {
 
-
   },
-  beforeRouteUpdate (to, from, next) {
-      this.getUsername();
-      next();
-  }
+
 };
 </script>
 
