@@ -7,7 +7,7 @@ const state = {
 
 const getters = {
 // Check if token exists or not
-  isLoggedIn: state => !!state.token && !!state.username,
+  isLoggedIn: state => !!state.token || !!state.username,
   getUsername: state => state.username,
   getToken: state => state.token,
 };

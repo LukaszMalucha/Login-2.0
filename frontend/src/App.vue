@@ -8,6 +8,8 @@
 
 <script>
 import NavBarComponent from "@/components/NavBarComponent.vue";
+import { apiService } from "@/common/api.service.js";
+import { mapActions } from 'vuex';
 
 export default {
     name: "App",
@@ -22,10 +24,16 @@ export default {
   computed: {
   },
     methods: {
-
+      ...mapActions(['setUserInfo']),
+      async getUsername() {
+        const data = await apiService("/user/current-user/");
+        const requestUser = data["email"];
+        this.setUserInfo(requestUser);
+      }
 
     },
     created() {
+      this.getUsername()
     },
 }
 </script>
