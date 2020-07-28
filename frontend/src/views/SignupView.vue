@@ -32,7 +32,7 @@
 
           </div>
           <div class="row row-links">
-            <p><a href=""> Already have an account?  Log in</a></p>
+            <p><router-link :to="{ name: 'login'}"> Already have an account?  Log in</router-link></p>
           </div>
           <button type="submit" class="btn-login"><span>Continue <i class="far fa-arrow-alt-circle-right"></i></span>
           </button>
@@ -45,6 +45,9 @@
 
 <script>
 import { apiService } from "@/common/api.service.js";
+import { mapActions } from 'vuex';
+import axios from 'axios';
+import { CSRF_TOKEN } from "@/common/csrf_token.js"
 
 export default {
   name: "SignupView",
@@ -57,6 +60,26 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['login', 'setUserInfo', 'set']),
+    getUserInfo(token) {
+        axios.get("/auth/user/",
+        { headers:{
+                    'Content-Type': undefined,
+                    'X-CSRFTOKEN': CSRF_TOKEN,
+                    'Authorization': `Token ${token}`
+                  }
+        })
+        .then(data =>{
+          window.console.log(data)
+          this.setUsername(data.data.email)
+        })
+    },
+    loginUser(token) {
+      this.login(token)
+    },
+    setUsername(username) {
+        this.setUserInfo(username)
+    },
     signUp() {
       if (!this.email || !this.password1 || !this.password2 ) {
         this.error = "Fields can't be empty."
@@ -84,7 +107,8 @@ export default {
                 setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
               }
               else if (data.key) {
-                window.localStorage.setItem("token", data.key);
+                this.loginUser(data.key);
+                this.getUserInfo(data.key);
                 this.$router.push({ name: 'home' })
               }
             }

@@ -5,17 +5,15 @@
   </div>
   <div id="page-index">
     <div class="form-container">
-
       <form class="form-user" @submit.prevent="logIn">
         <fieldset class="form-box">
            <div class="row plain-element center-align">
             <h3>Log In</h3>
             <div class="row row-oauth">
-                  <i class="fab fa-github"></i>
-                  <i class="fab fa-facebook-f"></i>
-                  <i class="fab fa-google"></i>
+                <a href="http://localhost:8000/accounts/twitter/login/?process=login"> <i class="fab fa-twitter"></i> </a>
+                <a href="http://localhost:8000/accounts/github/login/?process=login"> <i class="fab fa-github"></i> </a>
+                <a href="http://localhost:8000/accounts/google/login/?process=login"> <i class="fab fa-google"></i> </a>
             </div>
-
           </div>
           <div class="row text-center row-form">
             <div class="row plain-element">
@@ -33,7 +31,7 @@
 
           </div>
           <div class="row row-links">
-            <p><a href="">Forgot Password</a>&nbsp; | &nbsp; <a href="">Create an Account</a></p>
+            <p><router-link :to="{ name: 'forgot-password'}">Forgot Password</router-link>&nbsp; | &nbsp; <router-link :to="{ name: 'signup'}">Create an Account</router-link></p>
           </div>
           <button type="submit" class="btn-login"><span>Continue <i class="far fa-arrow-alt-circle-right"></i></span>
           </button>
@@ -47,6 +45,8 @@
 <script>
 import { apiService } from "@/common/api.service.js";
 import { mapActions } from 'vuex';
+import axios from 'axios';
+import { CSRF_TOKEN } from "@/common/csrf_token.js"
 
 export default {
   name: "LoginView",
@@ -57,13 +57,27 @@ export default {
         error: null,
     }
   },
+
   methods: {
     ...mapActions(['login', 'setUserInfo']),
     loginUser(token) {
       this.login(token)
     },
     setUsername(username) {
-      this.setUserInfo(username)
+        this.setUserInfo(username)
+    },
+    getUserInfo(token) {
+        axios.get("/auth/user/",
+        { headers:{
+                    'Content-Type': undefined,
+                    'X-CSRFTOKEN': CSRF_TOKEN,
+                    'Authorization': `Token ${token}`
+                  }
+        })
+        .then(data =>{
+          window.console.log(data)
+          this.setUsername(data.data.email)
+        })
     },
     logIn() {
       if (!this.email || !this.password ) {
@@ -93,7 +107,7 @@ export default {
               }
               else if (data.key) {
                 this.loginUser(data.key);
-                this.setUserInfo("ADMIN");
+                this.getUserInfo(data.key);
                 this.$router.push({ name: 'home' });
               }
             }
@@ -104,7 +118,6 @@ export default {
 
   },
   created() {
-
     document.title = "Auth";
   }
 };

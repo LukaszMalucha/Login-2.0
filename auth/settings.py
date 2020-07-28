@@ -45,8 +45,9 @@ INSTALLED_APPS = [
     "allauth.account",
     'allauth.socialaccount',
     "dj_rest_auth.registration",
-    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.github',
 
 
     "rest_framework",
@@ -164,6 +165,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.TokenAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
     ]
 }
 

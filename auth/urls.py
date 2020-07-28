@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.conf.urls import url
 from core.views import IndexTemplateView
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('password-reset/confirm/<str:uidb64>/<str:token>', TemplateView.as_view(template_name="password_reset_confirm.html"), name='password_reset_confirm'),
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('auth/', include('dj_rest_auth.urls')),
     path('auth/registration/', include('dj_rest_auth.registration.urls')),
     path('user/', include('user.urls')),

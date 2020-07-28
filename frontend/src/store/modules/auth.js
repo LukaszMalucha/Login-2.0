@@ -7,8 +7,9 @@ const state = {
 
 const getters = {
 // Check if token exists or not
-  isLoggedIn: state => !!state.token,
-  getUsername: state => state.username
+  isLoggedIn: state => !!state.token && !!state.username,
+  getUsername: state => state.username,
+  getToken: state => state.token,
 };
 
 
@@ -23,7 +24,9 @@ const actions = {
   },
   logout: ({ commit }) => {
     commit('setToken', null);
+    commit('setUsername', null);
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('username');
   }
 };
 

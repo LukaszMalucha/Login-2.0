@@ -3,7 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import LoginView from "./views/LoginView.vue";
 import SignupView from "./views/SignupView.vue";
-import LogoutView from "./views/LogoutView.vue";
+import ForgotPasswordView from "./views/ForgotPasswordView.vue";
 
 Vue.use(Router);
 
@@ -26,9 +26,9 @@ export default new Router({
       component: LoginView
     },
     {
-      path: "/logout",
-      name: "logout",
-      component: LogoutView
+      path: "/forgot-password",
+      name: "forgot-password",
+      component: ForgotPasswordView
     },
   ]
 });
