@@ -1,8 +1,5 @@
 <template>
 <div class="row plain-element">
-  <div id="alert" class="alert alert-danger" role="alert">
-    {{ error }}
-  </div>
   <div id="page-index">
     <div class="form-container">
       <form class="form-user" @submit.prevent="logIn">
@@ -10,9 +7,9 @@
            <div class="row plain-element center-align">
             <h3>Log In</h3>
             <div class="row row-oauth">
-                <a href="http://localhost:8000/accounts/twitter/login/?process=login"> <i class="fab fa-twitter"></i> </a>
-                <a href="http://localhost:8000/accounts/github/login/?process=login"> <i class="fab fa-github"></i> </a>
-                <a href="http://localhost:8000/accounts/google/login/?process=login"> <i class="fab fa-google"></i> </a>
+                <a href="/accounts/twitter/login/?process=login"> <i class="fab fa-twitter"></i> </a>
+                <a href="/accounts/github/login/?process=login"> <i class="fab fa-github"></i> </a>
+                <a href="/accounts/google/login/?process=login"> <i class="fab fa-google"></i> </a>
             </div>
           </div>
           <div class="row text-center row-form">
@@ -54,17 +51,18 @@ export default {
     return {
         email: null,
         password: null,
-        error: null,
     }
   },
-
   methods: {
-    ...mapActions(['login', 'setUserInfo']),
+    ...mapActions(['login', 'setUserInfo', 'authError']),
     loginUser(token) {
       this.login(token)
     },
     setUsername(username) {
         this.setUserInfo(username)
+    },
+    showError(error) {
+      this.authError(error)
     },
     getUserInfo(token) {
         axios.get("/auth/user/",
@@ -75,15 +73,12 @@ export default {
                   }
         })
         .then(data =>{
-          window.console.log(data)
           this.setUsername(data.data.email)
         })
     },
     logIn() {
       if (!this.email || !this.password ) {
-        this.error = "Fields can't be empty."
-        document.getElementById("alert").style.display = "block";
-        setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+          this.showError("Fields can't be empty.");
       }
       else {
         let endpoint = "/auth/login/";
@@ -91,19 +86,13 @@ export default {
           .then(data => {
             if (data) {
               if (data.email) {
-                this.error = data.email[0];
-                document.getElementById("alert").style.display = "block";
-                setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+                this.showError(data.email[0]);
               }
               else if (data.non_field_errors) {
-                this.error = data.non_field_errors[0];
-                document.getElementById("alert").style.display = "block";
-                setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+                this.showError(data.non_field_errors[0]);
               }
               else if (data.password1) {
-                this.error = data.password1[0];
-                document.getElementById("alert").style.display = "block";
-                setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+                this.showError(data.password1[0]);
               }
               else if (data.key) {
                 this.loginUser(data.key);

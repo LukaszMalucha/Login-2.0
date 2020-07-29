@@ -1,15 +1,18 @@
 <template>
-<div class="alert alert-danger" role="alert">
-  This is a primary alert with Give it a click if you like.
-</div>
+  <div  id="alert" class="alert alert-danger" role="alert">
+    {{ getError() }}
+  </div>
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex';
 
 export default {
   name: "MessageComponent",
-
+  methods: {
+  ...mapGetters(['getError']),
+  }
 };
+
 </script>
 

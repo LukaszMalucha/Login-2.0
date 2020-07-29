@@ -1,8 +1,5 @@
 <template>
 <div class="row plain-element">
-  <div id="alert" class="alert alert-danger" role="alert">
-    {{ error }}
-  </div>
   <div id="page-index">
     <div class="form-container">
       <form class="form-user" @submit.prevent="signUp">
@@ -45,7 +42,7 @@
 
 <script>
 import { apiService } from "@/common/api.service.js";
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import axios from 'axios';
 import { CSRF_TOKEN } from "@/common/csrf_token.js"
 
@@ -53,14 +50,14 @@ export default {
   name: "SignupView",
   data() {
     return {
-        error: null,
         email: null,
         password1: null,
         password2: null,
     }
   },
   methods: {
-    ...mapActions(['login', 'setUserInfo', 'set']),
+    ...mapActions(['login', 'setUserInfo', 'authError']),
+    ...mapGetters(['getError']),
     getUserInfo(token) {
         axios.get("/auth/user/",
         { headers:{
@@ -70,7 +67,6 @@ export default {
                   }
         })
         .then(data =>{
-          window.console.log(data)
           this.setUsername(data.data.email)
         })
     },
@@ -80,11 +76,12 @@ export default {
     setUsername(username) {
         this.setUserInfo(username)
     },
+    showError(error) {
+      this.authError(error)
+    },
     signUp() {
       if (!this.email || !this.password1 || !this.password2 ) {
-        this.error = "Fields can't be empty."
-        document.getElementById("alert").style.display = "block";
-        setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+        this.showError("Fields can't be empty.");
       }
       else {
         let endpoint = "/auth/registration/";
@@ -92,19 +89,13 @@ export default {
           .then(data => {
             if (data) {
               if (data.email) {
-                this.error = data.email[0];
-                document.getElementById("alert").style.display = "block";
-                setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+                this.showError(data.email[0]);
               }
               else if (data.non_field_errors) {
-                this.error = data.non_field_errors[0];
-                document.getElementById("alert").style.display = "block";
-                setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+                this.showError(data.non_field_errors[0]);
               }
               else if (data.password1) {
-                this.error = data.password1[0];
-                document.getElementById("alert").style.display = "block";
-                setTimeout(() => document.getElementById("alert").style.display = "none", 5000);
+                this.showError(data.password1[0]);
               }
               else if (data.key) {
                 this.loginUser(data.key);

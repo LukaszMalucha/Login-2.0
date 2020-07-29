@@ -1,6 +1,7 @@
 <template>
     <div id="app">
       <NavBarComponent/>
+      <MessageComponent/>
 
       <router-view/>
     </div>
@@ -8,6 +9,7 @@
 
 <script>
 import NavBarComponent from "@/components/NavBarComponent.vue";
+import MessageComponent from "@/components/MessageComponent.vue";
 import { apiService } from "@/common/api.service.js";
 import { mapActions } from 'vuex';
 
@@ -15,7 +17,7 @@ export default {
     name: "App",
     components: {
       NavBarComponent,
-
+      MessageComponent,
     },
     data() {
       return {
@@ -26,7 +28,7 @@ export default {
     methods: {
       ...mapActions(['setUserInfo']),
       async getUsername() {
-        const data = await apiService("/user/current-user/");
+        const data = await apiService("/auth/current-user/");
         const requestUser = data["email"];
         this.setUserInfo(requestUser);
       }
