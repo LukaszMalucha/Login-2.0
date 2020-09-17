@@ -1,13 +1,20 @@
-# Django Vue Login
+## Django Vue Login
 
 #### VUE
+
 vue create frontend > Manually > Add Router > Y > Lint on save > In package.json > N
-npm install --save axios loadash qs vue-router vuex 
+
+cd frontend 
+
+npm install --save axios loadash qs vue-router vuex
+ 
 npm install --save-dev webpack-bundle-tracker@0.4.3    
 
+npm install --save countup.js vue-countup-v2
 
 
 ### Dj-rest-auth endpoints
+
 /dj-rest-auth/registration/ (POST)
 
 /dj-rest-auth/registration/verify-email/ (POST)

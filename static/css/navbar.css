@@ -202,6 +202,20 @@ nav ul a:hover {
 }
 
 
+.nav-button {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #000000;
+  text-transform: uppercase;
+  padding: 0px 0px 0px 20px;
+  height: 100% !important;
+	margin: 10px 0px;
+  background: none!important;
+  border: none;
+  cursor: pointer;
+}
+
 
 /*------------------------------------------------------------------------------
     MEDIA QUERIES

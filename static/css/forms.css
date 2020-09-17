@@ -67,7 +67,7 @@ body {
 
 
 .form-box a {
-  color: #9e9e9e;
+  color: #868686;
   letter-spacing: 1px;
   font-size: 12px;
 }
@@ -91,7 +91,7 @@ body {
 .row-oauth i{
    margin: 6px 12px;
    font-size: 16px;
-    color: #9e9e9e;
+    color: #868686;
 }
 
 .row-oauth i:hover,
@@ -104,7 +104,7 @@ body {
 .row-links {
   margin-top: 30px;
   margin-bottom: 30px;
-  color: #9e9e9e;
+  color: #868686;
   letter-spacing: 1px;
   font-size: 12px;
 }
@@ -283,6 +283,10 @@ blockquote {
 .file-field .btn:focus {
 	color: white;
 	background: #205592;
+}
+
+.label-checkbox {
+  font-size: 12px
 }
 
 
