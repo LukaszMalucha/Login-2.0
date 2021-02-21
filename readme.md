@@ -40,3 +40,12 @@ npm install --save countup.js vue-countup-v2
     access_token
     token_secret
 
+
+#### Enabling Active Directory
+
+1. Get python_ldap‑3.3.1+sasl‑cp37‑cp37m‑win_amd64.whl
+
+    https://www.lfd.uci.edu/~gohlke/pythonlibs/#python-ldap
+    
+2. pip install django-auth-adfs  
+    

@@ -26,5 +26,6 @@ urlpatterns = [
     path('auth/', include('dj_rest_auth.urls')),
     path('auth/registration/', include('dj_rest_auth.registration.urls')),
     path('auth/', include('user.urls')),
+    path('oauth2/', include('django_auth_adfs.urls')),
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
 ]
