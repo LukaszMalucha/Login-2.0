@@ -1,6 +1,6 @@
 django-auth-ldap==2.3.0
 Django==2.2
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 django-allauth==0.40.0
 dj-rest-auth==1.1.0
 django-webpack-loader==0.6.0
